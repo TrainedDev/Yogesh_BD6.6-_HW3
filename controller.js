@@ -1,31 +1,31 @@
-let games = [
+let books = [
   {
-    'gameId': 1,
-    'title': 'The Legend of Zelda: Breath of the Wild',
-    'genre': 'Adventure',
-    'platform': 'Nintendo Switch'
+      'bookId': 1,
+      'title': 'To Kill a Mockingbird',
+      'author': 'Harper Lee',
+      'genre': 'Fiction'
   },
   {
-    'gameId': 2,
-    'title': 'Red Dead Redemption 2',
-    'genre': 'Action',
-    'platform': 'PlayStation 4'
+      'bookId': 2,
+      'title': '1984',
+      'author': 'George Orwell',
+      'genre': 'Dystopian'
   },
   {
-    'gameId': 3,
-    'title': 'The Witcher 3: Wild Hunt',
-    'genre': 'RPG',
-    'platform': 'PC'
+      'bookId': 3,
+      'title': 'The Great Gatsby',
+      'author': 'F. Scott Fitzgerald',
+      'genre': 'Classic'
   }
 ];
 
-  const getAllgames = () => {
-    return games;
+  const getAllbooks = () => {
+    return books;
   };
 
-  const getGamesById = (id) => {
-    const data = games.find(ele => ele.gameId === Number(id));
+  const getbooksById = (id) => {
+    const data = books.find(ele => ele.bookId === Number(id));
     return data;
   };
 
-  module.exports = { getAllgames, getGamesById }
+  module.exports = { getAllbooks, getbooksById }

@@ -1,15 +1,15 @@
 const express = require("express");
 const app = express();
-const { getAllgames, getGamesById } = require("./controller")
+const { getAllbooks, getbooksById } = require("./controller")
 
-app.get("/games", async (req, res) => {
-    const result = getAllgames();
+app.get("/books", async (req, res) => {
+    const result = getAllbooks();
     if(!result) return {};
     res.status(200).json(result);
 });
 
-app.get("/games/details/:id", async (req, res) => {
-    const result = getGamesById(req.params.id);
+app.get("/books/details/:id", async (req, res) => {
+    const result = getbooksById(req.params.id);
     if(!result) return {};
     res.status(200).json(result);
 });

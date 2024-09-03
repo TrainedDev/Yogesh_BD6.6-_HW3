@@ -1,11 +1,11 @@
 const request = require("supertest");
 const http = require("http");
-const { getAllgames } = require("../controller");
+const { getAllbooks } = require("../controller");
 const { app } = require("../index");
 
 jest.mock("../controller", () => ({
     ...jest.requireActual("../controller"),
-    getAllgames: jest.fn()
+    getAllbooks: jest.fn()
 }));
 
 let server;
@@ -23,69 +23,69 @@ describe("test controller functions", () => {
     beforeEach(() => jest.clearAllMocks());
 
     it('should get all games', async () => {
-        let mockGames = [
+        let mockBooks = [
           {
-            'gameId': 1,
-            'title': 'The Legend of Zelda: Breath of the Wild',
-            'genre': 'Adventure',
-            'platform': 'Nintendo Switch'
+              'bookId': 1,
+              'title': 'To Kill a Mockingbird',
+              'author': 'Harper Lee',
+              'genre': 'Fiction'
           },
           {
-            'gameId': 2,
-            'title': 'Red Dead Redemption 2',
-            'genre': 'Action',
-            'platform': 'PlayStation 4'
+              'bookId': 2,
+              'title': '1984',
+              'author': 'George Orwell',
+              'genre': 'Dystopian'
           },
           {
-            'gameId': 3,
-            'title': 'The Witcher 3: Wild Hunt',
-            'genre': 'RPG',
-            'platform': 'PC'
+              'bookId': 3,
+              'title': 'The Great Gatsby',
+              'author': 'F. Scott Fitzgerald',
+              'genre': 'Classic'
           }
         ];
         
-        getAllgames.mockReturnValue(mockGames);
-        expect(getAllgames()).toEqual(mockGames);
-        expect(getAllgames().length).toBe(3);
+        getAllbooks.mockReturnValue(mockBooks);
+        expect(getAllbooks()).toEqual(mockBooks);
+        expect(getAllbooks().length).toBe(3);
     });
 });
 
 describe("test all the api's",  () => {
-    it("this api should return all games", async () => {
-        let mockGames = [
+    it("this api should return all books", async () => {
+        let mockBooks = [
           {
-            'gameId': 1,
-            'title': 'The Legend of Zelda: Breath of the Wild',
-            'genre': 'Adventure',
-            'platform': 'Nintendo Switch'
+              'bookId': 1,
+              'title': 'To Kill a Mockingbird',
+              'author': 'Harper Lee',
+              'genre': 'Fiction'
           },
           {
-            'gameId': 2,
-            'title': 'Red Dead Redemption 2',
-            'genre': 'Action',
-            'platform': 'PlayStation 4'
+              'bookId': 2,
+              'title': '1984',
+              'author': 'George Orwell',
+              'genre': 'Dystopian'
           },
           {
-            'gameId': 3,
-            'title': 'The Witcher 3: Wild Hunt',
-            'genre': 'RPG',
-            'platform': 'PC'
+              'bookId': 3,
+              'title': 'The Great Gatsby',
+              'author': 'F. Scott Fitzgerald',
+              'genre': 'Classic'
           }
         ];
 
-        const res = await request(server).get("/games");
+        const res = await request(server).get("/books");
         expect(res.status).toEqual(200);
-        expect(res.body).toEqual(mockGames);
+        expect(res.body).toEqual(mockBooks);
     });
 
-    it('this api should return games by its id', async () => {
-        const res = await request(server).get("/games/details/1");
+    it('this api should return books by its id', async () => {
+        const res = await request(server).get("/books/details/1");
         expect(res.status).toEqual(200);
         expect(res.body).toEqual({
-          'gameId': 1,
-          'title': 'The Legend of Zelda: Breath of the Wild',
-          'genre': 'Adventure',
-          'platform': 'Nintendo Switch'
-        });
+          'bookId': 1,
+          'title': 'To Kill a Mockingbird',
+          'author': 'Harper Lee',
+          'genre': 'Fiction'
+      });
     });
 });

@@ -1,31 +1,31 @@
-let movies = [
+let games = [
   {
-    'movieId': 1,
-    'title': 'Inception',
-    'genre': 'Sci-Fi',
-    'director': 'Christopher Nolan'
+    'gameId': 1,
+    'title': 'The Legend of Zelda: Breath of the Wild',
+    'genre': 'Adventure',
+    'platform': 'Nintendo Switch'
   },
   {
-    'movieId': 2,
-    'title': 'The Shawshank Redemption',
-    'genre': 'Drama',
-    'director': 'Frank Darabont'
+    'gameId': 2,
+    'title': 'Red Dead Redemption 2',
+    'genre': 'Action',
+    'platform': 'PlayStation 4'
   },
   {
-    'movieId': 3,
-    'title': 'The Godfather',
-    'genre': 'Crime',
-    'director': 'Francis Ford Coppola'
+    'gameId': 3,
+    'title': 'The Witcher 3: Wild Hunt',
+    'genre': 'RPG',
+    'platform': 'PC'
   }
 ];
 
-  const getAllMovies = () => {
-    return movies;
+  const getAllgames = () => {
+    return games;
   };
 
-  const getMovieById = (id) => {
-    const data = movies.find(ele => ele.movieId === Number(id));
+  const getGamesById = (id) => {
+    const data = games.find(ele => ele.gameId === Number(id));
     return data;
   };
 
-  module.exports = { getAllMovies, getMovieById }
+  module.exports = { getAllgames, getGamesById }
